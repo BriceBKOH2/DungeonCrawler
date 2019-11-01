@@ -21,11 +21,11 @@ public class CharacterTest {
 	
 	@Before
 	public void init() {
-		character = new Character("Test", "Test");
+		character = new Character("Test");
 	}
 	
 	
-	/* public void levelup() */
+	/* public void levelUp() */
 	
 	
 		// Correct value changes
@@ -33,7 +33,7 @@ public class CharacterTest {
 	
 	@Test
 	public void levelup_CorrectLevel() {
-		character.levelup();
+		character.levelUp();
 		assertEquals(2, character.getLevel());
 	}
 	
@@ -41,24 +41,24 @@ public class CharacterTest {
 	
 	@Test
 	public void levelup_CorrectHealth() {
-		int maxHealt = character.getHealth();
-		character.levelup();
-		assertEquals((int) (maxHealt*1.10f), character.getHealth());
+		int maxHealth = character.getHealth();
+		character.levelUp();
+		assertEquals((int) (maxHealth += maxHealth / 10), character.getHealth());
 	}
 	
 	
 	@Test
 	public void levelup_CorrectMaxHealth() {
-		int maxHealt = character.getMaxHealth();
-		character.levelup();
-		assertEquals((int) (maxHealt*1.10f), character.getMaxHealth());
+		int maxHealth = character.getMaxHealth();
+		character.levelUp();
+		assertEquals((int) (maxHealth += maxHealth / 10), character.getMaxHealth());
 	}
 	
 	
 	@Test
 	public void levelup_CorrectStrength() {
 		int strength = character.getStrength();
-		character.levelup();
+		character.levelUp();
 		assertEquals(strength + 2, character.getStrength());
 	}
 	
@@ -66,7 +66,7 @@ public class CharacterTest {
 	@Test
 	public void levelup_CorrectAgility() {
 		int agility = character.getAgility();
-		character.levelup();
+		character.levelUp();
 		assertEquals(agility + 2, character.getAgility());
 	}
 	
@@ -74,7 +74,7 @@ public class CharacterTest {
 	@Test
 	public void levelup_CorrectIntellect() {
 		int intellect = character.getIntellect();
-		character.levelup();
+		character.levelUp();
 		assertEquals(intellect + 2, character.getIntellect());
 	}
 	
@@ -138,7 +138,7 @@ public class CharacterTest {
 	public void attack_physical_CorrectResult() {
 		PowerMockito.mockStatic(DiceRandom.class);
 		Mockito.when(DiceRandom.d12()).thenReturn(10);
-		assertEquals(13, character.attack_physical());
+		assertEquals(character.getStrength() + 10, character.attack_physical());
 	}
 	
 	
@@ -151,6 +151,6 @@ public class CharacterTest {
 	public void attack_magical_CorrectResult() {
 		PowerMockito.mockStatic(DiceRandom.class);
 		Mockito.when(DiceRandom.d12()).thenReturn(5);
-		assertEquals(8, character.attack_magical());
+		assertEquals(character.getIntellect() + 5, character.attack_magical());
 	}
 }

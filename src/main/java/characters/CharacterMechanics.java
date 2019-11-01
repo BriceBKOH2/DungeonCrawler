@@ -1,10 +1,10 @@
-package characters.interfacemechanics;
+package characters;
 
 public interface CharacterMechanics {
 	
 	
 	/** Methods that increase the character stats and health based on its type */
-	void levelup();
+	void levelUp();
 	
 	
 	/** Methods that decrease the health of the character, return true if the character health gets at 0 or below, false otherwise */

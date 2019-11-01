@@ -2,49 +2,115 @@ package characters;
 
 import static utils.DiceRandom.*;
 
-/* local */
-import characters.interfacemechanics.CharacterMechanics;
-
 public class Character implements CharacterMechanics{
+	
 	
 	/* Attributes */
 	
 	
 	/** Measure the power of the character, increase in level means increase in character's stats and health. */
-	private int level;
+	protected int level;
 	/** Name of the character */
-	private String name;
+	protected String name;
 	/** Type of the character, determines starting stats and lvl up stats increase, ... . */
-	private String type;
+	protected String type;
 	/** The amount determines what level the character is, each level up increase the amount needed by 10%. */
-	private long experience;
+	protected long experience;
 	
 	
 		// Basic statistics (stats)
 	
 	
 	/** Influence physical damage.*/
-	private int strength;
+	protected int strength;
 	/** Influence magical damage.*/
-	private int intellect;
+	protected int intellect;
 	/** Influence hit chance and dodge chance. */
-	private int agility;
+	protected int agility;
 	
 	
 		// Health
 	
 	
 	/** Max value the health can get too (in case of healing) */
-	private int maxHealth;
+	protected int maxHealth;
 	/** Health Point : 0 or bellow = death = end of combat; (end of game if its a Playable Character(PC), reward if this a Non Playable Character (NPC => monster, ...) 
 	 * IMPORTANT : Always use setHealth to change Health value so health doesnt go above max_healt */
-	private int health;
+	protected int health;
 
 	
 	/* Constructors */
 	
 	
-	protected Character(String name, String type) {
+	public Character() {
+		level = 1;
+		name = "empty";
+		type = "character without type";	
+		experience = 0;
+		
+		strength = 3;
+		intellect = 3;
+		agility = 3;
+		
+		maxHealth = 100;
+		health = maxHealth;
+	}
+	
+	
+	public Character(String name) {
+		level = 1;
+		this.name = name;
+		type = "character without type";	
+		experience = 0;
+		
+		strength = 3;
+		intellect = 3;
+		agility = 3;
+		
+		maxHealth = 100;
+		health = maxHealth;
+	}
+	
+	
+	public Character(String name, int level) {
+		level = 1;
+		this.name = name;
+		type = "character without type";	
+		experience = 0;
+		
+		strength = 3;
+		intellect = 3;
+		agility = 3;
+		
+		maxHealth = 100;
+		health = maxHealth;
+		
+		for (int i = 1; i < level; i++) {
+			this.levelUp();
+		}
+	}
+	
+	
+	public Character(String name, int level, long experience) {
+		level = 1;
+		this.name = name;
+		type = "character without type";	
+		this.experience = experience;
+		
+		strength = 3;
+		intellect = 3;
+		agility = 3;
+		
+		maxHealth = 100;
+		health = maxHealth;
+		
+		for (int i = 1; i < level; i++) {
+			this.levelUp();
+		}
+	}
+	
+	
+	public Character(String name, String type) {
 		level = 1;
 		this.name = name;
 		this.type = type;	
@@ -59,8 +125,8 @@ public class Character implements CharacterMechanics{
 	}
 	
 	
-	protected Character(int level, String name, String type, int strength, int intellect, int agility) {
-		this.level = level;
+	public Character(int level, String name, String type, int strength, int intellect, int agility) {
+		this.level = 1;
 		this.name = name;
 		this.type = type;	
 		experience = 0;
@@ -71,10 +137,14 @@ public class Character implements CharacterMechanics{
 		
 		maxHealth = 100;
 		health = maxHealth;
+		
+		for (int i = 1; i < level; i++) {
+			this.levelUp();
+		}
 	}
 
 	
-	protected Character(int level, String name, String type, long experience, int strength, int intellect, int agility) {
+	public Character(int level, String name, String type, long experience, int strength, int intellect, int agility) {
 		this.level = level;
 		this.name = name;
 		this.type = type;	
@@ -88,7 +158,7 @@ public class Character implements CharacterMechanics{
 		health = maxHealth;
 		
 		for (int i = 0; i < level; i++) {
-			this.levelup();
+			this.levelUp();
 		}
 	}
 	
@@ -99,47 +169,47 @@ public class Character implements CharacterMechanics{
 		/* Getters */
 	
 
-	protected int getLevel() {
+	public int getLevel() {
 		return level;
 	}
 
 
-	protected String getName() {
+	public String getName() {
 		return name;
 	}
 
 	
-	protected String getType() {
+	public String getType() {
 		return type;
 	}
 
 
-	protected long getExperience() {
+	public long getExperience() {
 		return experience;
 	}
 	
 	
-	protected int getStrength() {
+	public int getStrength() {
 		return strength;
 	}
 
 
-	protected int getIntellect() {
+	public int getIntellect() {
 		return intellect;
 	}
 
 	
-	protected int getAgility() {
+	public int getAgility() {
 		return agility;
 	}
 
 
-	protected int getMaxHealth() {
+	public int getMaxHealth() {
 		return maxHealth;
 	}
 
 
-	protected int getHealth() {
+	public int getHealth() {
 		return health;
 	}
 
@@ -197,11 +267,10 @@ public class Character implements CharacterMechanics{
 	}
 
 	
-	/* Inherited by CharacterMechanics interface */
-	
+		/* Inherited by CharacterMechanics interface */
 	
 	@Override
-	public void levelup() {
+	public void levelUp() {
 		level++;
 		strength += 2;
 		intellect += 2;
