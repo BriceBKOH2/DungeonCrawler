@@ -24,7 +24,7 @@ public class HeroTest {
 	@Test
 	public void reward_NegativeParameters() {
 		long experience = hero.getExperience();
-		hero.reward(-10);
+		hero.gainExperience(-10);
 		assertEquals(experience,hero.getExperience());
 	}
 	
@@ -35,7 +35,7 @@ public class HeroTest {
 	@Test
 	public void reward_CorrectExperience() {
 		long experience = hero.getExperience();
-		hero.reward(5);
+		hero.gainExperience(5);
 		assertEquals(experience + 5,hero.getExperience());
 	}
 
@@ -47,7 +47,7 @@ public class HeroTest {
 	@Test
 	public void reward_CorrectLevelUp() {
 		int level = hero.getLevel();
-		hero.reward(10);
+		hero.gainExperience(10);
 		assertEquals(level + 1,hero.getLevel());
 	}
 
@@ -55,7 +55,7 @@ public class HeroTest {
 	@Test
 	public void reward_CorrectLevelUpMultiple() {
 		int level = hero.getLevel();
-		hero.reward(25);
+		hero.gainExperience(25);
 		assertEquals(level + 2,hero.getLevel());
 	}
 	

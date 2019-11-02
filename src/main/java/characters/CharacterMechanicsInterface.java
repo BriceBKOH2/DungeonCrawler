@@ -1,6 +1,6 @@
 package characters;
 
-public interface CharacterMechanics {
+public interface CharacterMechanicsInterface {
 	
 	
 	/** Methods that increase the character stats and health based on its type */

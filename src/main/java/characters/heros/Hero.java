@@ -50,7 +50,7 @@ public class Hero extends Character implements HeroMechanicsInterface{
 	
 	
 	@Override
-	public void reward(long experienceReward) {
+	public void gainExperience(long experienceReward) {
 		if (experienceReward >= 0) {
 			experience += experienceReward;
 			

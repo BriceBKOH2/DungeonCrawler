@@ -2,7 +2,7 @@ package characters;
 
 import static utils.DiceRandom.*;
 
-public class Character implements CharacterMechanics{
+public class Character implements CharacterMechanicsInterface{
 	
 	
 	/* Attributes */
@@ -73,7 +73,7 @@ public class Character implements CharacterMechanics{
 	
 	
 	public Character(String name, int level) {
-		level = 1;
+		this.level = 1;
 		this.name = name;
 		type = "character without type";	
 		experience = 0;
@@ -92,7 +92,7 @@ public class Character implements CharacterMechanics{
 	
 	
 	public Character(String name, int level, long experience) {
-		level = 1;
+		this.level = 1;
 		this.name = name;
 		type = "character without type";	
 		this.experience = experience;

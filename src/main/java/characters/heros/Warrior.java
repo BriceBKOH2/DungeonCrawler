@@ -35,7 +35,7 @@ public class Warrior extends Hero{
 		
 		maxHealth = 300;
 		health = maxHealth;
-		this.reward(experience);
+		this.gainExperience(experience);
 	}
 	
 	/* Methods */

@@ -22,14 +22,14 @@ public class MageTest {
 
 	
 	@Test
-	public void levelup_CorrectLevel() {
+	public void levelUp_CorrectLevel() {
 		mage.levelUp();
 		assertEquals(2, mage.getLevel());
 	}
 	
 
 	@Test
-	public void levelup_CorrectHealth() {
+	public void levelUp_CorrectHealth() {
 		int maxHealth = mage.getHealth();
 		mage.levelUp();
 		assertEquals((int) (maxHealth += maxHealth * 6 / 100), mage.getHealth());
@@ -37,7 +37,7 @@ public class MageTest {
 
 	
 	@Test
-	public void levelup_CorrectMaxHealth() {
+	public void levelUp_CorrectMaxHealth() {
 		int maxHealth = mage.getMaxHealth();
 		mage.levelUp();
 		assertEquals((int) (maxHealth += maxHealth * 6 / 100), mage.getMaxHealth());
@@ -45,7 +45,7 @@ public class MageTest {
 
 	
 	@Test
-	public void levelup_CorrectStrength() {
+	public void levelUp_CorrectStrength() {
 		int strength = mage.getStrength();
 		mage.levelUp();
 		assertEquals(strength + 2, mage.getStrength());
@@ -53,7 +53,7 @@ public class MageTest {
 
 	
 	@Test
-	public void levelup_CorrectAgility() {
+	public void levelUp_CorrectAgility() {
 		int agility = mage.getAgility();
 		mage.levelUp();
 		assertEquals(agility + 1, mage.getAgility());
@@ -61,7 +61,7 @@ public class MageTest {
 
 	
 	@Test
-	public void levelup_CorrectIntellect() {
+	public void levelUp_CorrectIntellect() {
 		int intellect = mage.getIntellect();
 		mage.levelUp();
 		assertEquals(intellect + 5, mage.getIntellect());

@@ -35,7 +35,7 @@ public class Thief extends Hero{
 		
 		maxHealth = 250;
 		health = maxHealth;
-		this.reward(experience);
+		this.gainExperience(experience);
 	}
 	
 		/* Inherited by CharacterMechanics interface */

@@ -22,7 +22,7 @@ public class WarriorTest {
 	
 	
 	@Test
-	public void levelup_CorrectLevel() {
+	public void levelUp_CorrectLevel() {
 		warrior.levelUp();
 		assertEquals(2, warrior.getLevel());
 	}
@@ -30,7 +30,7 @@ public class WarriorTest {
 	
 	
 	@Test
-	public void levelup_CorrectHealth() {
+	public void levelUp_CorrectHealth() {
 		int maxHealth = warrior.getHealth();
 		warrior.levelUp();
 		assertEquals((int) (maxHealth += maxHealth / 10), warrior.getHealth());
@@ -38,7 +38,7 @@ public class WarriorTest {
 	
 	
 	@Test
-	public void levelup_CorrectMaxHealth() {
+	public void levelUp_CorrectMaxHealth() {
 		int maxHealth = warrior.getMaxHealth();
 		warrior.levelUp();
 		assertEquals((int) (maxHealth += maxHealth / 10), warrior.getMaxHealth());
@@ -46,7 +46,7 @@ public class WarriorTest {
 	
 	
 	@Test
-	public void levelup_CorrectStrength() {
+	public void levelUp_CorrectStrength() {
 		int strength = warrior.getStrength();
 		warrior.levelUp();
 		assertEquals(strength + 4, warrior.getStrength());
@@ -54,7 +54,7 @@ public class WarriorTest {
 	
 	
 	@Test
-	public void levelup_CorrectAgility() {
+	public void levelUp_CorrectAgility() {
 		int agility = warrior.getAgility();
 		warrior.levelUp();
 		assertEquals(agility + 1, warrior.getAgility());
@@ -62,7 +62,7 @@ public class WarriorTest {
 	
 	
 	@Test
-	public void levelup_CorrectIntellect() {
+	public void levelUp_CorrectIntellect() {
 		int intellect = warrior.getIntellect();
 		warrior.levelUp();
 		assertEquals(intellect + 1, warrior.getIntellect());

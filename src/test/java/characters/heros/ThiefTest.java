@@ -22,14 +22,14 @@ public class ThiefTest {
 
 	
 	@Test
-	public void levelup_CorrectLevel() {
+	public void levelUp_CorrectLevel() {
 		thief.levelUp();
 		assertEquals(2, thief.getLevel());
 	}
 	
 
 	@Test
-	public void levelup_CorrectHealth() {
+	public void levelUp_CorrectHealth() {
 		int maxHealth = thief.getHealth();
 		thief.levelUp();
 		assertEquals((int) (maxHealth * 1.08), thief.getHealth());
@@ -37,7 +37,7 @@ public class ThiefTest {
 
 	
 	@Test
-	public void levelup_CorrectMaxHealth() {
+	public void levelUp_CorrectMaxHealth() {
 		int maxHealth = thief.getMaxHealth();
 		thief.levelUp();
 		assertEquals((int) (maxHealth * 1.08f), thief.getMaxHealth());
@@ -45,7 +45,7 @@ public class ThiefTest {
 
 	
 	@Test
-	public void levelup_CorrectStrength() {
+	public void levelUp_CorrectStrength() {
 		int strength = thief.getStrength();
 		thief.levelUp();
 		assertEquals(strength + 2, thief.getStrength());
@@ -53,7 +53,7 @@ public class ThiefTest {
 
 	
 	@Test
-	public void levelup_CorrectAgility() {
+	public void levelUp_CorrectAgility() {
 		int agility = thief.getAgility();
 		thief.levelUp();
 		assertEquals(agility + 3, thief.getAgility());
@@ -61,7 +61,7 @@ public class ThiefTest {
 
 	
 	@Test
-	public void levelup_CorrectIntellect() {
+	public void levelUp_CorrectIntellect() {
 		int intellect = thief.getIntellect();
 		thief.levelUp();
 		assertEquals(intellect + 2, thief.getIntellect());

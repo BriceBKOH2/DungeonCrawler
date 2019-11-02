@@ -5,13 +5,13 @@ CheckList :
   Create Character class with associated method
   Unit testing on Character class
 
-Create Warrior Thief and Mage sub class of Hero (implements interface for reward method and is subclass of Character) with override of specific method from Character
-Unit testing on the three classes
+  Create Warrior Thief and Mage sub class of Hero (implements interface for reward method and is subclass of Character) with override of specific method from Character
+  Unit testing on the three classes
+
+  Create Monster sub class of Character
+  Unit testing on the class
 
 - To Do :
-
-Create Monster sub class of Character
-Unit testing on the class
 
 Test combat player against monster
 Unit testing on combat if needed

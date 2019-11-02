@@ -35,7 +35,7 @@ public class Mage extends Hero{
 		
 		maxHealth = 200;
 		health = maxHealth;
-		this.reward(experience);
+		this.gainExperience(experience);
 	}
 	
 	
