@@ -2,58 +2,52 @@ package characters.heros;
 
 import characters.Character;
 
-public class Hero extends Character implements HeroMechanicsInterface{
-	
+public class Hero extends Character implements HeroMechanicsInterface {
+
 	/* Attributes */
-	/** Represent the threshold to reach with experience to level up a character, increase by 10% by each level up. */
+	/**
+	 * Represent the threshold to reach with experience to level up a character,
+	 * increase by 10% by each level up.
+	 */
 	protected long nextLevelUp = 10;
 
-	
 	/* Constructors */
-	
-	
+
 	protected Hero() {
 		level = 1;
 		name = "empty";
-		type = "hero";	
+		type = "hero";
 		experience = 0;
-		
+
 		strength = 8;
 		intellect = 8;
 		agility = 8;
-		
+
 		maxHealth = 250;
 		health = maxHealth;
 	}
-	
-	
+
 	/* Methods */
 
+	/* Getters */
 
-		/* Getters */
-	
-	
 	public long getNextLevelUp() {
 		return nextLevelUp;
 	}
 
-	
-		/* Setters */
-	
+	/* Setters */
 
 	protected void setNextLevelUp(long nextLevelUp) {
 		this.nextLevelUp = nextLevelUp;
 	}
-	
-	
-		/* Inherited by HeroMechanicsInterface */
-	
-	
+
+	/* Inherited by HeroMechanicsInterface */
+
 	@Override
 	public void gainExperience(long experienceReward) {
 		if (experienceReward >= 0) {
 			experience += experienceReward;
-			
+
 			while (nextLevelUp <= experience) {
 				this.levelUp();
 				nextLevelUp *= 2.10;
@@ -61,5 +55,13 @@ public class Hero extends Character implements HeroMechanicsInterface{
 		}
 	}
 
-	
+	/* Others */
+
+	@Override
+	public String toString() {
+		return type + " : " + name + " [level=" + level + ", experience=" + experience + ", strength=" + strength
+				+ ", nextLevelUp=" + nextLevelUp + ", intellect=" + intellect + ", agility=" + agility + ", Health ("
+				+ health + " / " + maxHealth + ") ]";
+	}
+
 }

@@ -18,7 +18,7 @@ public class Monster extends Character {
 		intellect = 5;
 		agility = 5;
 		
-		maxHealth = 50;
+		maxHealth = 100;
 		health = maxHealth;
 	}
 	
@@ -33,7 +33,7 @@ public class Monster extends Character {
 		intellect = 5;
 		agility = 5;
 		
-		maxHealth = 50;
+		maxHealth = 100;
 		health = maxHealth;
 	}
 	
@@ -48,7 +48,7 @@ public class Monster extends Character {
 		intellect = 5;
 		agility = 5;
 		
-		maxHealth = 50;
+		maxHealth = 100;
 		health = maxHealth;
 		
 		for (int i = 1; i < level; i++) {
