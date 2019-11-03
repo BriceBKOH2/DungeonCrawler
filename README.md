@@ -11,26 +11,23 @@ CheckList :
   Create Monster sub class of Character
   Unit testing on the class
 
-- To Do :
-
 Test combat player against monster
 Unit testing on combat if needed
 
+Add user_interface to do combat with console interaction
+
+Add encounter of Coach and Medic
+
+Add Game class and end of game when 15 fights are done.
+
+
+- To Do :
 Add different monster type, subclass of monster (and subclass of different type?)
 Unit testing (yes i know, its a reccuring theme)
 
-Add user_interface to do combat with console interaction
-Unit testing on user_interface
-
-Add encounter of Coach and Medic
-Unit testing on both cases
-
-Add Game class and end of game when 15 fights are done.
-Unit testing
+more unit testing (userinterface, game methods, ...)
 
 Boss monster, subtype of a type of monster(?)
-Unit testing, appears on last fight of the game
-
 Save by serializing object in a file
 Retrieve object and run a game with retrieved game
 Tests
