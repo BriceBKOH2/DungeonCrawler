@@ -312,7 +312,23 @@ public class Character implements CharacterMechanicsInterface {
 		return (attack_hit_rate + (this.getLevel() - target.getLevel()) * 0.1f
 				+ (this.getAgility() - target.getAgility()) * 0.05f);
 	}
-
+	
+	public boolean bestHit(Character target) {
+		if (strength > intellect) {
+			return this.hit_physical(target);
+		} else {
+			return this.hit_magical(target);
+		}
+	}
+	
+	public int bestAttack() {
+		if (strength > intellect) {
+			return this.attack_physical();
+		} else {
+			return this.attack_magical();
+		}
+	}
+	
 	/* Others */
 
 	@Override

@@ -46,5 +46,10 @@ public interface CharacterMechanicsInterface {
 		return this.attack_magical() + modifier;
 	}
 	
+	/** Choose best on Strenght and Intellect stat of the character what attack to use to maximise hit and damage */
+	public boolean bestHit(Character target);
+	
+	/** Choose best on Strenght and Intellect stat of the character what attack to use to maximise hit and damage */
+	public int bestAttack();
 	
 }

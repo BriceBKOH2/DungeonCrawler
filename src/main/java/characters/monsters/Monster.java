@@ -73,5 +73,4 @@ public class Monster extends Character {
 		this.setHealth(health += increaseHealth);
 	}
 
-	
 }
