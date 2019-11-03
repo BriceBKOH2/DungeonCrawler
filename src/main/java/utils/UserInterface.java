@@ -14,15 +14,18 @@ public class UserInterface {
 		System.out.print("Welcome to DungeonCrawler , input a corresponding number to access :\n" + "1) New game\n"
 				+ "2) Load existing game\n" + "3) Exit\n");
 		Integer inputUser = Integer.valueOf(Scan.scan.nextLine());
+		Game game;
 		switch (inputUser) {
 		case 1:
-			UserInterface.newGame();
+			game = UserInterface.newGame();
+			game.start();
 			break;
 		case 2:
-			UserInterface.loadGame();
+			game = UserInterface.loadGame();
+			game.start();
 			break;
 		default:
-			System.out.println("Thank you for using our services, goodbye !");
+			System.out.println("Thank you for playing, see you again in the Dungeon !");
 		}
 		return;
 	}
@@ -59,7 +62,7 @@ public class UserInterface {
 			case 2:
 				System.out.println("The hero was a cunning Thief, known for agility and nimbleness, named :");
 				playerName = Scan.scan.nextLine();
-				hero = new Warrior(playerName);
+				hero = new Thief(playerName);
 				noHeroChosen = false;
 				break;
 			case 3:
@@ -77,16 +80,27 @@ public class UserInterface {
 	}
 	
 	public static String getActionType(Character character) {
-		Integer inputUser;
+		Integer inputUser = 0;
 		String actionChosen = null;
 		boolean noActionSelected = true;
+		boolean validInput = true;
 		
 		while (noActionSelected) {
 
 			System.out.println("Choose " + character.getName() + " actions :\n"
 					+ "1) physical attack\n"
 					+ "2) magical attack\n");
-			inputUser = Integer.valueOf(Scan.scan.nextLine());
+			
+			do{
+		        if(Scan.scan.hasNextInt()){ // This checks to see if the next input is a valid **int**
+		            inputUser = Scan.scan.nextInt();
+		            validInput = true;
+		        }
+		        else{
+		            System.out.print("Not a valid integer!\n");
+		            Scan.scan.next();
+		        }
+		    }while(validInput == false);
 			
 			switch (inputUser) {
 			case 1:
@@ -102,5 +116,11 @@ public class UserInterface {
 			}
 		}
 		return actionChosen;
+	}
+	
+	public static void waitForUser() {
+		System.out.print("Press a key to continue : ");
+		Scan.scan.nextLine();
+		System.out.print("\n");
 	}
 }

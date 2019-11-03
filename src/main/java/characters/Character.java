@@ -268,6 +268,7 @@ public class Character implements CharacterMechanicsInterface {
 	public boolean hurt(int damage) {
 		if (damage > 0) {
 			this.setHealth(health -= damage);
+			System.out.println(this.getName() + " takes " + damage + " points of damage.");
 		}
 
 		return health <= 0 ? true : false;
@@ -275,44 +276,66 @@ public class Character implements CharacterMechanicsInterface {
 
 	@Override
 	public int attack_physical() {
+		System.out.print(this.getName() + " swing the weapon in hands.");
 		return strength + d12();
 	}
 
 	@Override
 	public int attack_magical() {
+		System.out.print(this.getName() + " unleash a magic attack. ");
 		return intellect + d12();
 	}
 
 	@Override
 	public boolean hit_physical(Character target) {
-		if (DiceRandom.d100() <= this.hit_score_physical(target) * 100) {
+		int hitScore = DiceRandom.d100();
+		if (hitScore >= this.hit_score_physical(target)) {
+			System.out.println(this.getName() + " hit the " + target.getName() + " with a " + hitScore);
 			return true;
-		} else
+		} else {
+			System.out.println(this.getName() + " misses the " + target.getName() + " with a " + hitScore);
 			return false;
+		}
 	}
 
 	@Override
-	public float hit_score_physical(Character target) {
+	public int hit_score_physical(Character target) {
 		float attack_hit_rate = 0.7f;
-		return (attack_hit_rate + (this.getLevel() - target.getLevel()) * 0.1f
-				+ (this.getAgility() - target.getAgility()) * 0.05f);
+		return (int) (100 - 100 * (attack_hit_rate + (this.getLevel() - target.getLevel()) * 0.1f
+				+ (this.getAgility() - target.getAgility()) * 0.05f));
+	}
+
+	@Override
+	public void print_hitScore_physical(Character target) {
+		System.out.println(this.getName() + " needs to roll " + this.hit_score_physical(target) + " or above to hit "
+				+ target.getName() + " with a physical attack. ");
 	}
 
 	@Override
 	public boolean hit_magical(Character target) {
-		if (DiceRandom.d100() <= this.hit_score_magical(target) * 100) {
+		int hitScore = DiceRandom.d100();
+		if (hitScore >= this.hit_score_magical(target)) {
+			System.out.println(this.getName() + " hit the " + target.getName() + " with a " + hitScore);
 			return true;
-		} else
+		} else {
+			System.out.println(this.getName() + " misses the " + target.getName() + " with a " + hitScore);
 			return false;
+		}
 	}
 
 	@Override
-	public float hit_score_magical(Character target) {
+	public int hit_score_magical(Character target) {
 		float attack_hit_rate = 0.9f;
-		return (attack_hit_rate + (this.getLevel() - target.getLevel()) * 0.1f
-				+ (this.getAgility() - target.getAgility()) * 0.05f);
+		return (int) (100 - 100 * (attack_hit_rate + (this.getLevel() - target.getLevel()) * 0.1f
+				+ (this.getAgility() - target.getAgility()) * 0.05f));
 	}
-	
+
+	@Override
+	public void print_hitScore_magical(Character target) {
+		System.out.println(this.getName() + " needs to roll " + this.hit_score_magical(target) + " or above to hit "
+				+ target.getName() + " with a magical attack.");
+	}
+
 	public boolean bestHit(Character target) {
 		if (strength > intellect) {
 			return this.hit_physical(target);
@@ -320,7 +343,7 @@ public class Character implements CharacterMechanicsInterface {
 			return this.hit_magical(target);
 		}
 	}
-	
+
 	public int bestAttack() {
 		if (strength > intellect) {
 			return this.attack_physical();
@@ -328,7 +351,15 @@ public class Character implements CharacterMechanicsInterface {
 			return this.attack_magical();
 		}
 	}
-	
+
+	public void healed(int healAmount) {
+		if (healAmount > 0) {
+			this.setHealth(healAmount);
+			System.out.println(this.getName() + " is healed for " + healAmount + "  health points.");
+			return;
+		}
+	}
+
 	/* Others */
 
 	@Override

@@ -144,28 +144,28 @@ public class CharacterTest {
 	@Test
 	public void hit_physical_ReturnFalse() {
 		PowerMockito.mockStatic(DiceRandom.class);
-		Mockito.when(DiceRandom.d100()).thenReturn(100);
+		Mockito.when(DiceRandom.d100()).thenReturn(1);
 		assertEquals(false, character.hit_physical(character));
 	}
 
 	@Test
 	public void hit_physical_ReturnFalseBarelyMissed() {
 		PowerMockito.mockStatic(DiceRandom.class);
-		Mockito.when(DiceRandom.d100()).thenReturn(71);
+		Mockito.when(DiceRandom.d100()).thenReturn(29);
 		assertEquals(false, character.hit_physical(character));
 	}
 
 	@Test
 	public void hit_physical_ReturnTrueBarelyHit() {
 		PowerMockito.mockStatic(DiceRandom.class);
-		Mockito.when(DiceRandom.d100()).thenReturn(70);
+		Mockito.when(DiceRandom.d100()).thenReturn(30);
 		assertEquals(true, character.hit_physical(character));
 	}
 
 	@Test
 	public void hit_physical_ReturnTrue() {
 		PowerMockito.mockStatic(DiceRandom.class);
-		Mockito.when(DiceRandom.d100()).thenReturn(1);
+		Mockito.when(DiceRandom.d100()).thenReturn(100);
 		assertEquals(true, character.hit_physical(character));
 	}
 
@@ -185,9 +185,9 @@ public class CharacterTest {
 		Character target = new Character(100, "MegaBoss", "MegaBoss", 200, 200, 200);
 		float attack_hit_rate = 0.7f;
 		assertEquals(
-				attack_hit_rate + (character.getLevel() - target.getLevel()) * 0.1f
-						+ (character.getAgility() - target.getAgility()) * 0.05f,
-				character.hit_score_physical(target), 0.1);
+				(int) (100 - 100 * (attack_hit_rate + (character.getLevel() - target.getLevel()) * 0.1f
+						+ (character.getAgility() - target.getAgility()) * 0.05f)),
+				character.hit_score_physical(target));
 	}
 
 	@Test
@@ -195,8 +195,8 @@ public class CharacterTest {
 		Character target = new Character(1, "RegularMinion", "Minion", 3, 3, 3);
 		float attack_hit_rate = 0.7f;
 		assertEquals(
-				attack_hit_rate + (character.getLevel() - target.getLevel()) * 0.1f
-						+ (character.getAgility() - target.getAgility()) * 0.05f,
+				(int) (100 - 100 * (attack_hit_rate + (character.getLevel() - target.getLevel()) * 0.1f
+						+ (character.getAgility() - target.getAgility()) * 0.05f)),
 				character.hit_score_physical(target), 0.1);
 	}
 
@@ -214,28 +214,28 @@ public class CharacterTest {
 	@Test
 	public void hit_magical_ReturnFalse() {
 		PowerMockito.mockStatic(DiceRandom.class);
-		Mockito.when(DiceRandom.d100()).thenReturn(100);
+		Mockito.when(DiceRandom.d100()).thenReturn(1);
 		assertEquals(false, character.hit_magical(character));
 	}
 
 	@Test
 	public void hit_magical_ReturnFalseBarelyMissed() {
 		PowerMockito.mockStatic(DiceRandom.class);
-		Mockito.when(DiceRandom.d100()).thenReturn(91);
+		Mockito.when(DiceRandom.d100()).thenReturn(9);
 		assertEquals(false, character.hit_magical(character));
 	}
 
 	@Test
 	public void hit_magical_ReturnTrueBarelyHit() {
 		PowerMockito.mockStatic(DiceRandom.class);
-		Mockito.when(DiceRandom.d100()).thenReturn(90);
+		Mockito.when(DiceRandom.d100()).thenReturn(10);
 		assertEquals(true, character.hit_magical(character));
 	}
 
 	@Test
 	public void hit_magical_ReturnTrue() {
 		PowerMockito.mockStatic(DiceRandom.class);
-		Mockito.when(DiceRandom.d100()).thenReturn(1);
+		Mockito.when(DiceRandom.d100()).thenReturn(100);
 		assertEquals(true, character.hit_magical(character));
 	}
 
@@ -255,8 +255,8 @@ public class CharacterTest {
 		Character target = new Character(100, "MegaBoss", "MegaBoss", 200, 200, 200);
 		float attack_hit_rate = 0.9f;
 		assertEquals(
-				attack_hit_rate + (character.getLevel() - target.getLevel()) * 0.1f
-						+ (character.getAgility() - target.getAgility()) * 0.05f,
+				(int) (100 - 100 * (attack_hit_rate + (character.getLevel() - target.getLevel()) * 0.1f
+						+ (character.getAgility() - target.getAgility()) * 0.05f)),
 				character.hit_score_magical(target), 0.1);
 	}
 
@@ -265,8 +265,8 @@ public class CharacterTest {
 		Character target = new Character(1, "RegularMinion", "Minion", 3, 3, 3);
 		float attack_hit_rate = 0.9f;
 		assertEquals(
-				attack_hit_rate + (character.getLevel() - target.getLevel()) * 0.1f
-						+ (character.getAgility() - target.getAgility()) * 0.05f,
+				(int) (100 - 100 * (attack_hit_rate + (character.getLevel() - target.getLevel()) * 0.1f
+						+ (character.getAgility() - target.getAgility()) * 0.05f)),
 				character.hit_score_magical(target), 0.1);
 	}
 

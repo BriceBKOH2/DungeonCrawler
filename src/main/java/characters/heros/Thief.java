@@ -1,5 +1,7 @@
 package characters.heros;
 
+import utils.UserInterface;
+
 public class Thief extends Hero{
 	
 	
@@ -51,6 +53,8 @@ public class Thief extends Hero{
 		int increaseHealth = maxHealth * 8 / 100;
 		maxHealth += increaseHealth;
 		this.setHealth(health += increaseHealth);
+		System.out.println("[LEVEL UP] => level " + this.getLevel() + " : +2 Strength +2 Intellect +3 Agility + " + increaseHealth + " health.");
+		UserInterface.waitForUser();
 	}
 	
 	

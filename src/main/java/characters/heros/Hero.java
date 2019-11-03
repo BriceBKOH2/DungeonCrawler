@@ -50,7 +50,7 @@ public class Hero extends Character implements HeroMechanicsInterface {
 
 			while (nextLevelUp <= experience) {
 				this.levelUp();
-				nextLevelUp *= 2.10;
+				nextLevelUp += 10 + nextLevelUp/10;
 			}
 		}
 	}

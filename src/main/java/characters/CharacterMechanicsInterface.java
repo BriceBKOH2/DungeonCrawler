@@ -15,13 +15,17 @@ public interface CharacterMechanicsInterface {
 	boolean hit_magical(Character target);
 	
 	
-	/** Methods that return an int based on the character's stats*/
-	float hit_score_physical(Character target);
+	/** Methods that return an float based on the character's stats*/
+	int hit_score_physical(Character target);
 	
+	/** Return the hit_score needed for a physical attack to hit */
+	void print_hitScore_physical(Character target);
 	
-	/** Methods that return an int based on the character's stats*/
-	float hit_score_magical(Character target);
+	/** Methods that return an float based on the character's stats*/
+	int hit_score_magical(Character target);
 	
+	/** Return the hit_score needed for a magical attack to hit */
+	void print_hitScore_magical(Character target);
 	
 	/** Methods that decrease the health of the character, return true if the character health gets at 0 or below, false otherwise */
 	boolean hurt(int damage);
@@ -52,4 +56,6 @@ public interface CharacterMechanicsInterface {
 	/** Choose best on Strenght and Intellect stat of the character what attack to use to maximise hit and damage */
 	public int bestAttack();
 	
+	/** add the value of int healing to the health of the character, the setHealth() checks that it doesnt go above maxHealth attribute */
+	public void healed(int healAmount);
 }

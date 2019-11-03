@@ -1,5 +1,7 @@
 package characters.heros;
 
+import utils.UserInterface;
+
 public class Warrior extends Hero{
 	
 	
@@ -55,6 +57,8 @@ public class Warrior extends Hero{
 		int increaseHealth = maxHealth / 10;
 		maxHealth += increaseHealth;
 		this.setHealth(health += increaseHealth);
+		System.out.println("[LEVEL UP] => level " + this.getLevel() + " : +4 Strength +1 Intellect +1 Agility + " + increaseHealth + " health.");
+		UserInterface.waitForUser();
 	}
 	
 	
