@@ -123,4 +123,9 @@ public class UserInterface {
 		Scan.scan.nextLine();
 		System.out.print("\n");
 	}
+	
+	public static void endEncounter(Game game) {
+		
+	}
+	
 }

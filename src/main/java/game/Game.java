@@ -1,5 +1,6 @@
 package game;
 
+import java.io.Serializable;
 import java.util.*;
 
 import characters.Character;
@@ -8,8 +9,13 @@ import characters.heros.*;
 import utils.DiceRandom;
 import utils.UserInterface;
 
-public class Game {
+public class Game implements Serializable {
 
+	/**
+	 * Generated versionID for serialization purposes 
+	 */
+	private static final long serialVersionUID = -5491659127409615506L;
+	
 	/** player stock the player the user chose to play with */
 	Hero player;
 	/** stock the monster the play faced / will face in combat */
@@ -103,7 +109,7 @@ public class Game {
 				if (this.charactersFight(player, monsterList.get(fightsSurvived))) {
 					player.gainExperience(monsterList.get(fightsSurvived).getExperience());
 					fightsSurvived++;
-					if (fightsSurvived >= 15) {
+					if (fightsSurvived <= 15) {
 						monsterList.add(new Monster());
 					}
 				}
