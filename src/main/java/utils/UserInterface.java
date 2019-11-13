@@ -127,5 +127,10 @@ public class UserInterface {
 	public static void endEncounter(Game game) {
 		
 	}
+
+	  static String getSaveFile() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
