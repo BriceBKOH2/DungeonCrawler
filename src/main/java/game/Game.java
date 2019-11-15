@@ -7,15 +7,16 @@ import characters.Character;
 import characters.monsters.*;
 import characters.heros.*;
 import utils.DiceRandom;
+import utils.IOSerialization;
 import utils.UserInterface;
 
 public class Game implements Serializable {
 
 	/**
-	 * Generated versionID for serialization purposes 
+	 * Generated versionID for serialization purposes
 	 */
 	private static final long serialVersionUID = -5491659127409615506L;
-	
+
 	/** player stock the player the user chose to play with */
 	Hero player;
 	/** stock the monster the play faced / will face in combat */
@@ -85,27 +86,35 @@ public class Game implements Serializable {
 
 	/* Others */
 
+	/** */
 	public void start() {
 		int dice100Result;
 
 		if (monsterList.isEmpty()) {
 			monsterList.add(new Monster());
 		} else if (monsterList.get(monsterList.size() - 1).getHealth() <= 0) {
+			// If last monster in the list is "dead", add a new before the encounter
 			monsterList.add(new Monster());
 		}
 
 		System.out.println(
-				"You finish descending the stairs, you are now in the infamous Dungeon, what awaits you, lets find out.");
+				"You finish descending the stairs, you are now in the infamous Dungeon, what as you, lets find out.");
 
 		while (player.getHealth() > 0 && fightsSurvived < 15) {
+			IOSerialization.saveAutoGame(this); /*
+												 * Saving the file before each encounter by serialization in a default
+												 * file location
+												 */
 			dice100Result = DiceRandom.d100();
 			System.out.print("You open the heavy door blocking your progress, to find ");
-			// Encounter phase 70% combat, 20% wandering training coach, 10% wandering
-			// cleric
+			/*
+			 * Encounter phase 70% combat, 20% wandering training coach, 10% wandering
+			 * cleric
+			 */
 			if (dice100Result <= 70) { // Combat
 				System.out.print("a monster !\n");
 				System.out.println("Remaining fights : " + (15 - fightsSurvived));
-		
+
 				if (this.charactersFight(player, monsterList.get(fightsSurvived))) {
 					player.gainExperience(monsterList.get(fightsSurvived).getExperience());
 					fightsSurvived++;
@@ -113,7 +122,7 @@ public class Game implements Serializable {
 						monsterList.add(new Monster());
 					}
 				}
-				
+
 			} else if (dice100Result <= 90) { // Training coach
 				System.out.print("a friendly face, its the famous training coach!\n");
 				this.trainingCoachEncounter(player);
@@ -121,7 +130,7 @@ public class Game implements Serializable {
 				System.out.print("a wandering cleric, willing to dispense its miracle to help you!\n");
 				this.clericEncounter(player);
 			}
-			// UserInterface.endEncounter(this); // TO BE DONE
+			UserInterface.endEncounter(this);
 		}
 
 		if (player.getHealth() > 0) {
@@ -143,7 +152,7 @@ public class Game implements Serializable {
 
 		System.out.println("Combat !");
 		UserInterface.waitForUser();
-		
+
 		while (player.getHealth() > 0 && monster.getHealth() > 0) {
 			counter++;
 			System.out.println(player);
@@ -161,8 +170,7 @@ public class Game implements Serializable {
 				}
 				break;
 			default:
-				System.out.println(
-						"That is not supposed to happen, what action did you do?"
+				System.out.println("That is not supposed to happen, what action did you do?"
 						+ " Call the developper to tell him something went wrong.");
 				break;
 			}
@@ -181,16 +189,17 @@ public class Game implements Serializable {
 			return true;
 		}
 	}
-
+	
+	/** grants a levelUp() to the hero and keep the current gape in exp to the next level*/
 	public void trainingCoachEncounter(Hero player) {
 		System.out.println("Training coach : Hey, nice seeing something else than monster in this place, stay a moment."
-				+ "How about I share some fighting stories and give you some tips to survive out there.\n"
-				+ "\n"
+				+ "How about I share some fighting stories and give you some tips to survive out there.\n" + "\n"
 				+ "The knowledge you gain is enough to for you to gain enlightement.");
-		long addedExperience = 10 + player.getNextLevelUp()/10 ;
+		long addedExperience = 10 + player.getNextLevelUp() / 10;
 		player.gainExperience(addedExperience);
 	}
 
+	/** had 25% of maxHealth from player to his health with the healed(int) method */
 	public void clericEncounter(Hero player) {
 		System.out.println("Wandering cleric : Oh, you surprised me, i'm here to purify this wicked dungeon.\n"
 				+ "Since you are here i may as well spare you one of my miracle.");

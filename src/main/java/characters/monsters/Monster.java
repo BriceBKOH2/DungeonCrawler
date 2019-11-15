@@ -1,13 +1,17 @@
 package characters.monsters;
 
+import java.io.Serializable;
+
 import characters.Character;
 
-public class Monster extends Character {
+public class Monster extends Character implements Serializable {
 
 
 	/* Constructor */
 	
-	
+	private static final long serialVersionUID = 4775486264413816816L;
+
+
 	public Monster() {
 		level = 1;
 		name = "Basic Monster";

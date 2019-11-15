@@ -2,12 +2,16 @@ package characters;
 
 import static utils.DiceRandom.*;
 
+import java.io.Serializable;
+
 import utils.DiceRandom;
 
-public class Character implements CharacterMechanicsInterface {
+public class Character implements CharacterMechanicsInterface, Serializable {
 
 	/* Attributes */
 
+	private static final long serialVersionUID = 3503812558894110579L;
+	
 	/**
 	 * Measure the power of the character, increase in level means increase in
 	 * character's stats and health.

@@ -2,12 +2,11 @@ package characters.heros;
 
 import utils.UserInterface;
 
-public class Mage extends Hero{
+public class Mage extends Hero {
 	
-	
-	/* Constructors */
-	
-	
+	private static final long serialVersionUID = 6209362381391048128L;
+
+
 	public Mage(String name) {
 		level = 1;
 		this.name = name;

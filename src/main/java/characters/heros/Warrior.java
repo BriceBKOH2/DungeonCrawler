@@ -4,10 +4,8 @@ import utils.UserInterface;
 
 public class Warrior extends Hero{
 	
-	
-	/* Constructors */
-	
-	
+	private static final long serialVersionUID = -404954203309945712L;
+
 	public Warrior(String name) {
 		level = 1;
 		this.name = name;

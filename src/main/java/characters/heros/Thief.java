@@ -4,10 +4,8 @@ import utils.UserInterface;
 
 public class Thief extends Hero{
 	
-	
-	/* Constructors */
-	
-	
+	private static final long serialVersionUID = -7852957007074644819L;
+
 	public Thief(String name) {
 		level = 1;
 		this.name = name;

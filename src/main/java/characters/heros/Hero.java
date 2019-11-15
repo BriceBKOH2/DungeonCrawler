@@ -1,8 +1,12 @@
 package characters.heros;
 
+import java.io.Serializable;
+
 import characters.Character;
 
-public class Hero extends Character implements HeroMechanicsInterface {
+public class Hero extends Character implements HeroMechanicsInterface, Serializable {
+
+	private static final long serialVersionUID = 2909490577242192947L;
 
 	/* Attributes */
 	/**
